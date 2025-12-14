@@ -1,21 +1,12 @@
-'use client'
+'use server'
 
-import { useState } from "react";
-import { toggleMonitors } from "./actions";
-import { Switch } from "@mui/material";
+import { isLoggedIn } from "./auth"
+import { LoginForm } from "./Components/LoginForm";
+import Dashboard from "./Dashboard"
 
-export default function Home() {
+export default async function Page() {
+  
+  if (!await isLoggedIn()) return <LoginForm />;
 
-  const [checked, setChecked] = useState(true)
-  const handleToggle = async ()=>{
-    setChecked(!checked)
-    await toggleMonitors();
-  }
-  return (
-    <>
-    Toggle Monitors
-    <Switch checked={checked} onChange={handleToggle} />
-
-    </>
-  );
+  return <Dashboard />;
 }
