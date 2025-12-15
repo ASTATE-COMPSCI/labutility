@@ -85,7 +85,6 @@ export default function MonitorSwitch()
           
                 <Switch 
                     checked={checked} 
-                    onChange={handleToggle}
                 />
             </Box>
         </Box>
